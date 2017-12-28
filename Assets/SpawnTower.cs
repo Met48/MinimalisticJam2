@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnTower : MonoBehaviour {
 
     public GameObject target;
-
+    float floorPos = -2.9f;
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown("Fire1"))
@@ -15,7 +15,7 @@ public class SpawnTower : MonoBehaviour {
             print(p.x);
             print(p.y);
 
-            Instantiate(target, new Vector3(p.x, p.y, 0.0f), Quaternion.identity);
+            Instantiate(target, new Vector3(p.x, floorPos, 0.0f), Quaternion.identity);
         }
 	}
 }
