@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Tower
+    uniqueID: 2286834173
+    locked: 0
+  - name: Ladder
+    uniqueID: 474253107
+    locked: 0
+  - name: Player
+    uniqueID: 489089643
+    locked: 0
