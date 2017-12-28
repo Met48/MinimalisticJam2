@@ -186,8 +186,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 1.2}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.58, y: 1.17}
+  m_EdgeRadius: 0.1
 --- !u!212 &73653099
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1264,7 +1264,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 328164598}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 45c5bb9965919754b8d26154d1524eff, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
