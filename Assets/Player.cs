@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
 
-    float speed = 20f;
+    public float speed = 2f;
+    public float jumpForce = 600f;
     Rigidbody2D rb;
 
 	// Use this for initialization
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && rb.velocity.y == 0) // If the player hits up while their vertical velocity is 0, then jump.
         {
-            rb.AddForce(new Vector3(0, 600, 0));
+            rb.AddForce(new Vector3(0, jumpForce, 0));
         }
 	}
 }
