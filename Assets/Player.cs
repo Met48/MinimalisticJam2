@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 
         rb.velocity = new Vector3(movement, rb.velocity.y, 0);
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && rb.velocity.y == 0) // If the player hits up while their vertical velocity is 0, then jump.
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && rb.velocity.y == 0) // If the player hits up while their vertical velocity is 0, then jump.
         {
             rb.AddForce(new Vector3(0, jumpForce, 0));
         }
