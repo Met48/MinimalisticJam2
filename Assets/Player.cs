@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-
-
     public float speed = 2f;
     public float jumpForce = 600f;
     Rigidbody2D rb;
@@ -16,14 +14,15 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        var input = Input.GetAxis("Horizontal");
-        var movement = input * speed;
+        var horizontalInput = Input.GetAxis("Horizontal");
+        var horizontalMovement = horizontalInput * speed;
 
-        rb.velocity = new Vector3(movement, rb.velocity.y, 0);
+        rb.velocity = new Vector3(horizontalMovement, rb.velocity.y, 0);
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && rb.velocity.y == 0) // If the player hits up while their vertical velocity is 0, then jump.
-        {
+        if ((Input.GetButtonDown("Jump") && rb.velocity.y == 0)) // If the player hits up while their vertical velocity is 0, then jump.
             rb.AddForce(new Vector3(0, jumpForce, 0));
-        }
-	}
+
+        else if (Input.GetButtonUp("Jump") && rb.velocity.y > 3)
+            rb.AddForce(new Vector3(0, -jumpForce/2, 0));
+    }
 }

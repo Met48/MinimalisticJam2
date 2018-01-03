@@ -11,10 +11,9 @@ public class SpawnTower : MonoBehaviour {
 		if (Input.GetButtonDown("Fire1"))
         {
             Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
-            print(p);
-            print(p.x);
-            print(p.y);
-
+            
+            // cannot collide with player
+            // if colliding with ground
             Instantiate(target, new Vector3(p.x, floorPos, 0.0f), Quaternion.identity);
         }
 	}
