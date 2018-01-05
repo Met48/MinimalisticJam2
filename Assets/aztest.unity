@@ -141,9 +141,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 1758419909}
-  invalidTower: {fileID: 0}
-  player: {fileID: 0}
-  tile: {fileID: 0}
+  invalidTower: {fileID: 391624083}
+  player: {fileID: 73653095}
+  tile: {fileID: 328164598}
 --- !u!4 &71671642
 Transform:
   m_ObjectHideFlags: 0
