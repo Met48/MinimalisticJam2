@@ -7,32 +7,33 @@ public class SpawnTower : MonoBehaviour {
     public GameObject tower;
     public GameObject invalidTower;
     public GameObject player;
+    public GameObject tile;
     // float floorPos = -2.9f;
     bool towerSilhouetteVisible;
-    Collision2D col;
     Vector3 p;
 
     private void Start()
     {
-        invalidTower = GameObject.Find("InvalidTower");
-        player = GameObject.Find("Player");
-
         invalidTower.SetActive(false);
         towerSilhouetteVisible = false;
     }
 
     // Update is called once per frame
     void Update () {
-        p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
         Physics2D.IgnoreCollision(player.GetComponent<BoxCollider2D>(), invalidTower.GetComponent<BoxCollider2D>());
+        p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
+        invalidTower.transform.position = p;
+
+        if (invalidTower.GetComponent<BoxCollider2D>().IsTouching(tile.GetComponent<Collider2D>()))
+        {
+            print("Is touching");
+        }
 
         if (Input.anyKeyDown)
             ShowTowerSilhouette();
 
         if (towerSilhouetteVisible == false)
             invalidTower.SetActive(false);
-
-        invalidTower.transform.position = p;
     }
 
     private void ShowTowerSilhouette()
