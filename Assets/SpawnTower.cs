@@ -8,26 +8,24 @@ public class SpawnTower : MonoBehaviour {
     public GameObject invalidTower;
     public GameObject player;
     public GameObject tile;
-    // float floorPos = -2.9f;
+    float floorPos;
+    bool updateYAxis;
     bool towerSilhouetteVisible;
     Vector3 p;
 
     private void Start()
     {
         invalidTower.SetActive(false);
+        updateYAxis = true;
         towerSilhouetteVisible = false;
     }
 
     // Update is called once per frame
     void Update () {
         Physics2D.IgnoreCollision(player.GetComponent<BoxCollider2D>(), invalidTower.GetComponent<BoxCollider2D>());
-        p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
+        p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, floorPos, 10.0f));
         invalidTower.transform.position = p;
-
-        if (invalidTower.GetComponent<BoxCollider2D>().IsTouching(tile.GetComponent<Collider2D>()))
-        {
-            print("Is touching");
-        }
+        UpdateY();
 
         if (Input.anyKeyDown)
             ShowTowerSilhouette();
@@ -36,6 +34,29 @@ public class SpawnTower : MonoBehaviour {
             invalidTower.SetActive(false);
     }
 
+    private void UpdateY()
+    {
+        if (updateYAxis == true)
+        {
+            if (invalidTower.GetComponent<BoxCollider2D>().IsTouching(tile.GetComponent<Collider2D>()))
+            {
+                floorPos = Input.mousePosition.y;
+                updateYAxis = false;
+            }
+            else
+            {
+                floorPos = Input.mousePosition.y;
+            }
+        }
+        else if (updateYAxis == false)
+        {
+            if (Input.mousePosition.y >= floorPos + 50)
+            {
+                updateYAxis = true;
+                floorPos = Input.mousePosition.y;
+            }
+        }
+    }
     private void ShowTowerSilhouette()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
